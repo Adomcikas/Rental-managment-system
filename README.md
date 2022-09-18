@@ -29,3 +29,5 @@ Administratorius galės:
 Sistemos sudedamos dalys:
 - Kliento pusė(angl. Front-End) - naudojant React.js;
 - Serverio pusė(angl. Back-End) - naudojant Node.js . Duomenų bazė - MySQL.
+
+![alt text](https://github.com/Adomcikas/Rental-managment-system/blob/main/DeploymentDiagram.jpg?raw=true)
