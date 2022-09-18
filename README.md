@@ -2,6 +2,7 @@
 
 ### Projekto tikslas
 Palengvinti klientui susirasti nuomojamą butą bei pagerinti nuomojamų butų skelbimo galimybę.
+
 Nuomoninkas norėdamas paskelbti nuomojamą butą pirmiausia užsiregistruos internetiniame puslapyje. Paskelbiant naują skelbimą turės pasirinkti arba parašyti adresą(miestas, gatvė, namas, butas) ir pateikti skelbimą patvirtinimui. Administratorius gali patvirtinti skelbimą, taip pat galivaldyti pasirenkamų miestų, gatvių, namų ir butų sąrašus. Norint administratorius gali pašalinti netinkantį skelbimą ar šalinti naudotoją. Svečiasgali peržiūrėti nuomojamų butų skelbimus.
 ### Funkciniai reikalavimai
 
