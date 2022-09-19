@@ -19,6 +19,7 @@ Registruotas naudotojas galės:
 - Redaguoti skelbimą.
 - Šalinti skelbimą.
 - Redaguoti komentaro įvertinimą.
+- Redaguoti komentarą.
 
 Administratorius galės:
 - Patvirtinti naujo nuomojamo buto skelbimo sukūrimą.
