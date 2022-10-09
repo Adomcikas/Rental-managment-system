@@ -12,7 +12,7 @@ const addReview= async (req, res) => {
 
     Review.create(info)
     .then(data => {
-        res.status(200).send(data)})
+        res.status(201).send(data)})
     .catch(err => {
         res.status(400).send({
             message: err.message || "Some error occurred while creating review."
@@ -26,7 +26,7 @@ const getAllReviews = async (req, res) => {
     .then(data => {
         res.status(200).send(data)})
     .catch(err => {
-        res.status(400).send({
+        res.status(500).send({
             message: err.message || "Some error occurred while retrieving all reviews."
         });
     });
@@ -39,7 +39,7 @@ const getReview = async (req, res) => {
     .then(data => {
         res.status(200).send(data)})
     .catch(err => {
-        res.status(400).send({
+        res.status(500).send({
             message: err.message || "Some error occurred while retrieving review."
         });
     });
@@ -62,9 +62,9 @@ const deleteReview = async (req, res) => {
     let id = req.params.id
     let id2 = req.params.id2
     Review.destroy({where: {commentId: id2,id: id}})
-    .then(res.status(200).send('review deleted'))
+    .then(res.status(204).send('review deleted'))
     .catch(err => {
-        res.status(400).send({
+        res.status(500).send({
             message: err.message || "Some error occurred while deleting review."
         });
     });

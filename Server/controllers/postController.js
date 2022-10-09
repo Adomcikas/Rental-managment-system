@@ -14,7 +14,7 @@ const addPost = async (req, res) => {
 
     Post.create(info)
     .then(data => {
-        res.status(200).send(data)
+        res.status(201).send(data)
     })
     .catch(err => {
         res.status(400).send({
@@ -32,7 +32,7 @@ const getAllposts = async (req, res) => {
         res.status(200).send(data)
     })
     .catch(err => {
-        res.status(400).send({
+        res.status(500).send({
             message: err.message || "Some error occurred while retrieving posts."
         });
     });
@@ -45,7 +45,7 @@ const getPost = async (req, res) => {
         res.status(200).send(data)
     })
     .catch(err => {
-        res.status(400).send({
+        res.status(500).send({
             message: err.message || "Some error occurred while retrieving posts."
         });
     });
@@ -68,9 +68,9 @@ const updatePost = async (req, res) => {
 const deletePost = async (req, res) => {
     let id = req.params.id
     Post.destroy({where: {id: id}})
-    .then(res.status(200).send('Deleted'))
+    .then(res.status(204).send('Deleted'))
     .catch(err => {
-        res.status(400).send({
+        res.status(500).send({
             message: err.message || "Some error occurred while deleting the Parcel."
         });
     });
