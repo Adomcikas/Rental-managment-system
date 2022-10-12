@@ -1,5 +1,6 @@
 const db = require('../models')
 
+
 const Post = db.posts
 
 
@@ -11,7 +12,6 @@ const addPost = async (req, res) => {
         description: req.body.description,
         //approved: req.body.approved ? req.body.approved : false
     }
-
     Post.create(info)
     .then(data => {
         res.status(201).send(data)

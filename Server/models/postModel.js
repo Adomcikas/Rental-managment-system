@@ -16,7 +16,13 @@ module.exports = (sequelize, DataTypes) => {
         },
         price: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            isInt: true,
+            allowNull: false,
+            validate: {
+                isInt: {
+                    msg: "Must be an integer"
+                  }
+            }
         },
         address: {
             type: DataTypes.STRING,

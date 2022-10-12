@@ -1,4 +1,5 @@
 const db = require('../models')
+const { Op } = require("sequelize");
 
 const Review = db.reviews
 
@@ -33,10 +34,21 @@ const getAllReviews = async (req, res) => {
 }
 
 const getReview = async (req, res) => {
-    let id = req.params.id
+    let id3 = req.params.id3
     let id2 = req.params.id2
-    Review.findOne({where: {commentId: id2,id: id}})
+    console.log(id3)
+    console.log(id2)
+    Review.findOne({
+        where: {
+            commentId: id2,
+            id: id3
+    }})
     .then(data => {
+        if(data == null)
+        {
+            res.status(404).send("Some error occurred while retrieving review.")
+            return;
+        }
         res.status(200).send(data)})
     .catch(err => {
         res.status(500).send({
@@ -46,9 +58,9 @@ const getReview = async (req, res) => {
 }
 
 const updateReview = async (req, res) => {
-    let id = req.params.id
+    let id3 = req.params.id3
     let id2 = req.params.id2
-    Review.update(req.body, {where: {commentId: id2,id: id}})
+    Review.update(req.body, {where: {id3: id3}})
     .then(data => {
         res.status(200).send(data)})
     .catch(err => {
@@ -59,9 +71,9 @@ const updateReview = async (req, res) => {
 }
 
 const deleteReview = async (req, res) => {
-    let id = req.params.id
+    let id3 = req.params.id3
     let id2 = req.params.id2
-    Review.destroy({where: {commentId: id2,id: id}})
+    Review.destroy({where: {id3: id3}})
     .then(res.status(204).send('review deleted'))
     .catch(err => {
         res.status(500).send({
