@@ -10,13 +10,29 @@ module.exports = (sequelize, DataTypes) => {
             primaryKey: true
         },
         rating: {
-            type: DataTypes.INTEGER
+            type: DataTypes.DOUBLE,
+            allowNull: false,
+            validate: {
+                isNumeric: {
+                    msg: "Rating must be a number"
+                },
+                notEmpty: {
+                    msg: "Rating cannot be empty"
+                },
+                notNull: {
+                    msg: 'Rating is required'
+                },
+                min: {
+                    args: -5,
+                    msg: 'Rating must be in between -5 and 5'
+                },
+                max: {
+                    args: 5,
+                    msg: 'Rating must be in between -5 and 5'
+                },
+            }
         }
-        // description: {
-        //     type: DataTypes.TEXT,
-        //     allowNull: true
-        // }
     })
-
+    
     return Review
 }

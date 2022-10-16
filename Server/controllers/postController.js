@@ -18,7 +18,7 @@ const addPost = async (req, res) => {
     })
     .catch(err => {
         res.status(400).send({
-            message: err.message || "Some error occurred while creating post."
+            message: err.message && "Some error occurred while creating post."
         });
     });
     //res.status(200).send(post)
@@ -33,7 +33,7 @@ const getAllposts = async (req, res) => {
     })
     .catch(err => {
         res.status(500).send({
-            message: err.message || "Some error occurred while retrieving posts."
+            message: err.message && "Some error occurred while retrieving posts."
         });
     });
 }
@@ -42,36 +42,53 @@ const getPost = async (req, res) => {
     let id = req.params.id
     Post.findOne({where: {id: id}})
     .then(data => {
+        if(data == null)
+        {
+            res.status(404).send("Some error occurred while retrieving post.")
+            return;
+        }
         res.status(200).send(data)
     })
     .catch(err => {
         res.status(500).send({
-            message: err.message || "Some error occurred while retrieving posts."
+            message: err.message && "Some error occurred while retrieving posts."
         });
     });
 }
 
 const updatePost = async (req, res) => {
-    let id = req.params.id
+    let id2 = req.params.id
 
-    Post.update(req.body, {where: {id: id}})
+    Post.update(req.body, {where: {id: id2}})
     .then(data => {
-        res.status(201).send(data)
+        if(data == 0 || data == null)
+        {
+            res.status(404).send("Some error occurred while updating post.")
+            return;
+        }
+        res.status(201).send(data && 'Updated')
     })
     .catch(err => {
         res.status(400).send({
-            message: err.message || "Some error occurred while retrieving posts."
+            message: err.message && "Some error occurred while updating post."
         });
     });
 }
 
 const deletePost = async (req, res) => {
-    let id = req.params.id
-    Post.destroy({where: {id: id}})
-    .then(res.status(204).send('Deleted'))
+    let id2 = req.params.id
+    Post.destroy({where: {id: id2}})
+    .then(data => {
+        if(data == 1) {
+            res.status(204).send("Deleted")
+        }
+        else {
+            res.status(404).send('Post with given id not found')
+        }
+    })
     .catch(err => {
         res.status(500).send({
-            message: err.message || "Some error occurred while deleting the Parcel."
+            message: err.message && "Some error occurred while deleting post."
         });
     });
 }

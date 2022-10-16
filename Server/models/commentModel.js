@@ -11,7 +11,15 @@ module.exports = (sequelize, DataTypes) => {
         },
         description: {
             type: DataTypes.TEXT,
-            allowNull: false
+            allowNull: false,
+            validate: {
+                notEmpty: {
+                    msg: "Description cannot be empty"
+                },
+                notNull: {
+                    msg: 'Description is required'
+                }
+            }
         }
     })
 

@@ -12,25 +12,60 @@ module.exports = (sequelize, DataTypes) => {
         },
         title: {
             type: DataTypes.STRING,
-            allowNull: false
-        },
-        price: {
-            type: DataTypes.INTEGER,
-            isInt: true,
             allowNull: false,
             validate: {
-                isInt: {
-                    msg: "Must be an integer"
-                  }
+                notEmpty: {
+                    msg: "Title cannot be empty"
+                },
+                notNull: {
+                    msg: 'Title is required'
+                }
+            }
+        },
+        price: {
+            type: Sequelize.DOUBLE,
+            allowNull: false,
+            validate: {
+                isNumeric: {
+                    msg: "Price must be a number"
+                },
+                notEmpty: {
+                    msg: "Price cannot be empty"
+                },
+                notNull: {
+                    msg: 'Price is required'
+                },
+                min: {
+                    args: 0.001,
+                    msg: 'Price must be greater than 0'
+                }
+                  
             }
         },
         address: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            validate: {
+                notEmpty: {
+                    msg: "address cannot be empty"
+                },
+                notNull: {
+                    msg: 'address is required'
+                }
+                  
+            }
         },
         description: {
             type: DataTypes.TEXT,
-            allowNull: false
+            allowNull: false,
+            validate: {
+                notEmpty: {
+                    msg: "description cannot be empty"
+                },
+                notNull: {
+                    msg: 'description is required'
+                }
+            }
         },
         approved: {
             type: DataTypes.BOOLEAN,
