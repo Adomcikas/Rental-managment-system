@@ -2,6 +2,8 @@ const db = require('../models')
 
 
 const Post = db.posts
+const Comment = db.comments
+const Review = db.reviews
 
 
 const addPost = async (req, res) => {
@@ -77,21 +79,22 @@ const updatePost = async (req, res) => {
 
 const deletePost = async (req, res) => {
     let id2 = req.params.id
-    Post.destroy({where: {id: id2}})
-    .then(data => {
-        if(data == 1) {
-            res.status(204).send("Deleted")
-        }
-        else {
-            res.status(404).send('Post with given id not found')
-        }
-    })
-    .catch(err => {
-        res.status(500).send({
-            message: err.message && "Some error occurred while deleting post."
+        Post.destroy({where: {id: id2}})
+        .then(data => {
+            if(data == 1) {
+                res.status(204).send(data)
+            }
+            else {
+                res.status(404).send('Post with given id not found')
+            }
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: err.message && "Some error occurred while deleting post."
+            });
         });
-    });
-}
+
+    };
 
 module.exports = {
     addPost,
