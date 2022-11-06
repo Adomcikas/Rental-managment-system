@@ -9,7 +9,6 @@ const User = db.users
 
 const login= async (req, res) => {
     const {username, password} = req.body;
-    //res.status(200).send("it works");
 
     User.findOne({where: {name: username, password: password}})
     .then(data => {
