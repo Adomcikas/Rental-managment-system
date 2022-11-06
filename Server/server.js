@@ -26,7 +26,7 @@ db.sequelize.sync({force: false })
 })
 
 app.get("/", (req, res) => {
-    res.json({ message: "Welcome to the application." });
+    res.json({ message: "Website" });
   });
 
 app.use('/api/posts', postRouter)
