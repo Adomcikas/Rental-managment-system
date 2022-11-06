@@ -7,11 +7,18 @@ const Review = db.reviews
 
 
 const addPost = async (req, res) => {
+    if (req.user.role != "User" && req.user.role != "Admin") {
+        res.status(403).send({
+            message: "Page access is restricted."
+        });
+        return;
+    }
     let info = {
         title: req.body.title,
         price: req.body.price,
         address: req.body.address,
         description: req.body.description,
+        userId: req.user.id,
         //approved: req.body.approved ? req.body.approved : false
     }
     Post.create(info)
@@ -59,9 +66,15 @@ const getPost = async (req, res) => {
 }
 
 const updatePost = async (req, res) => {
+    if (req.user.role != "User" && req.user.role != "Admin") {
+        res.status(403).send({
+            message: "Page access is restricted."
+        });
+        return;
+    }
     let id2 = req.params.id
 
-    Post.update(req.body, {where: {id: id2}})
+    Post.update(req.body, {where: {id: id2, userId:req.user.id}})
     .then(data => {
         if(data == 0 || data == null)
         {
@@ -78,21 +91,33 @@ const updatePost = async (req, res) => {
 }
 
 const deletePost = async (req, res) => {
-    let id2 = req.params.id
-        Post.destroy({where: {id: id2}})
-        .then(data => {
-            if(data == 1) {
-                res.status(204).send(data)
-            }
-            else {
-                res.status(404).send('Post with given id not found')
-            }
-        })
+    if (req.user.role != "User" && req.user.role != "Admin") {
+        res.status(403).send({
+            message: "Page access is restricted."
+        });
+        return;
+    }
+    if (req.user.role == "User") {
+        let id2 = req.params.id
+        Post.destroy({where: {id: id2,userId:req.user.id}})
+        .then(res.status(204).send('post deleted'))
         .catch(err => {
             res.status(500).send({
                 message: err.message && "Some error occurred while deleting post."
             });
         });
+    }
+    if (req.user.role == "Admin") {
+        let id2 = req.params.id
+        Post.destroy({where: {id: id2}})
+        .then(res.status(204).send('review deleted'))
+        .catch(err => {
+            res.status(500).send({
+                message: err.message && "Some error occurred while deleting post."
+            });
+        });
+    }
+    
 
     };
 

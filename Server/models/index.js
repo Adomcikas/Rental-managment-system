@@ -28,7 +28,7 @@ db.sequelize = sequelize
 db.posts = require('./postModel.js')(sequelize, DataTypes)
 db.comments = require('./commentModel.js')(sequelize, DataTypes)
 db.reviews = require('./reviewModel.js')(sequelize, DataTypes)
-// db.users 
+db.users = require('./UserModel.js')(sequelize, DataTypes) 
 
 db.posts.hasMany(db.comments, {
      as: "comment",
@@ -48,6 +48,33 @@ db.reviews.belongsTo(db.comments, {
     foreignKey: "commentId",
     onDelete: 'CASCADE',
     as: "comment"
+});
+db.users.hasMany(db.posts,{
+    as: "post",
+    onDelete: 'CASCADE'
+})
+db.posts.belongsTo(db.users, {
+    foreignKey: "userId",
+    as: "user",
+    onDelete: 'CASCADE'
+});
+db.users.hasMany(db.comments,{
+    as: "comment",
+    onDelete: 'CASCADE'
+})
+db.comments.belongsTo(db.users, {
+    foreignKey: "userId",
+    as: "user",
+    onDelete: 'CASCADE'
+});
+db.users.hasMany(db.reviews,{
+    as: "review",
+    onDelete: 'CASCADE'
+})
+db.reviews.belongsTo(db.users, {
+    foreignKey: "userId",
+    as: "user",
+    onDelete: 'CASCADE'
 });
 
 module.exports = db

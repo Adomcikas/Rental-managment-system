@@ -5,6 +5,12 @@ const Post = db.posts
 
 
 const addComment = async (req, res) => {
+    if (req.user.role != "User" && req.user.role != "Admin") {
+        res.status(403).send({
+            message: "Page access is restricted."
+        });
+        return;
+    }
     const postExists = await Post.count({where: {id: req.params.id1}}) > 0;
     if(!postExists) {
         res.status(404).send({
@@ -14,7 +20,8 @@ const addComment = async (req, res) => {
     }
     let info = {
         description: req.body.description,
-        postId: req.params.id1
+        postId: req.params.id1,
+        userId: req.user.id
     }
 
     Comment.create(info)
@@ -68,9 +75,15 @@ const getComment = async (req, res) => {
 }
 
 const updateComment = async (req, res) => {
+    if (req.user.role != "User" && req.user.role != "Admin") {
+        res.status(403).send({
+            message: "Page access is restricted."
+        });
+        return;
+    }
     let id2 = req.params.id1
     let id1 = req.params.id
-    const CommentExists = await Comment.count({where: {postId: id2, id: id1}}) > 0;
+    const CommentExists = await Comment.count({where: {postId: id2, id: id1,userId:req.user.id}}) > 0;
     if(!CommentExists) {
         res.status(404).send({
             message: "Some error occurred while editing comment."
@@ -95,6 +108,12 @@ const updateComment = async (req, res) => {
 }
 
 const deleteComment = async (req, res) => {
+    if (req.user.role != "User" && req.user.role != "Admin") {
+        res.status(403).send({
+            message: "Page access is restricted."
+        });
+        return;
+    }
     let id2 = req.params.id1
     let id1 = req.params.id
 
@@ -105,14 +124,26 @@ const deleteComment = async (req, res) => {
         });
         return;
     }
-
-    Comment.destroy({where: {postId: id2, id: id1}})
-    .then(res.status(204).send('Deleted comment'))
-    .catch(err => {
-        res.status(500).send({
-            message: err.message && "Some error occurred while deleting comment."
+    if (req.user.role == "User") {
+        Comment.destroy({where: {postId: id2, id: id1,userId:req.user.id}})
+        .then(res.status(204).send('Deleted comment'))
+        .catch(err => {
+            res.status(500).send({
+                message: err.message && "Some error occurred while deleting comment."
+            });
         });
-    });
+    }
+    if (req.user.role == "Admin") {
+        Comment.destroy({where: {postId: id2, id: id1}})
+        .then(res.status(204).send('Deleted comment'))
+        .catch(err => {
+            res.status(500).send({
+                message: err.message && "Some error occurred while deleting comment."
+            });
+        });
+    }
+
+
 }
 
 module.exports = {
