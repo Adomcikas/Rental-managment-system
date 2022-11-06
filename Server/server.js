@@ -25,6 +25,10 @@ db.sequelize.sync({force: false })
     console.log('Error'+ err)
 })
 
+app.get("/", (req, res) => {
+    res.json({ message: "Welcome to the application." });
+  });
+
 app.use('/api/posts', postRouter)
 app.use('/', commentRouter)
 app.use('/', reviewRouter)
