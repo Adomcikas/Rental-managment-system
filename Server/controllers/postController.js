@@ -19,7 +19,6 @@ const addPost = async (req, res) => {
         address: req.body.address,
         description: req.body.description,
         userId: req.user.id,
-        //approved: req.body.approved ? req.body.approved : false
     }
     Post.create(info)
     .then(data => {
@@ -30,7 +29,6 @@ const addPost = async (req, res) => {
             message: err.message && "Some error occurred while creating post."
         });
     });
-    //res.status(200).send(post)
 
 }
 
