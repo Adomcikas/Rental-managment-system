@@ -5,7 +5,7 @@ const Users = db.users;
 
 exports.generateToken = (user) => {
     const secret = 'MySecretKey';
-    const token = jwt.sign({id:user.id,email:user.email,role: user.role}, secret);
+    const token = jwt.sign({id:user.id,email:user.email,role: user.role}, secret,{expiresIn: '24h'});
     console.log(token);
 
     const decoded = jwt.verify(token, secret);

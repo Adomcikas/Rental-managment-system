@@ -13,7 +13,8 @@ const login= async (req, res) => {
     User.findOne({where: {name: username, password: password}})
     .then(data => {
         const accessToken = auth.generateToken(data)
-        res.status(200).send({data, accessToken})})
+        //res.status(200).send(json({"user": data, "access_token": accessToken}))})
+        res.status(200).send({"user": data, "access_token": accessToken})})
     .catch(err => {
         res.status(500).send({
             message: err.message && "username or password incorrect!"
