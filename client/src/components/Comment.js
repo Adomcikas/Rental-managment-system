@@ -6,14 +6,13 @@ function onClick() {
     console.log("yesy");
 }
 
-export default function Post({title, address, id, price, description}) {
+export default function Comment({description,id1,id2}) {
 
     return (
-        <Link to={`/api/posts/${id}`}>
+        <Link to={`/api/posts/${id1}/api/comments/${id2}`}>
             <div className="badges" onClick={onClick}>
                 <div>
-                    <p1 className="Posts-p1">{title}</p1>
-                    <p className="Posts-p">{address}</p>
+                    <p1 className="Posts-p1">{description}</p1>
                 </div>
             </div>
         </Link>

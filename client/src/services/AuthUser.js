@@ -13,12 +13,8 @@ export default function AuthUser() {
 
     const getUser = () => {
         const userString = sessionStorage.getItem('user');
-        if(userString) {
-            const user_detail = JSON.parse(userString);
-            return user_detail;
-        }
-        return null;
-       
+        const user_detail = JSON.parse(userString);
+        return user_detail;
     }
 
     const [token, setToken] = useState(getToken());
@@ -40,10 +36,10 @@ export default function AuthUser() {
 
     const http = axios.create({
         baseURL: "http://localhost:8000",
-        headers: {
-            "Content-type": "application/json",
-            "Authorization": `Bearer ${token}`
-        }
+        // headers: {
+        //     "Content-type": "application/json",
+        //     "Authorization": `Bearer ${token}`
+        // }
     });
     return {
         setToken: saveToken,

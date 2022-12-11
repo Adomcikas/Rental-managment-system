@@ -9,6 +9,7 @@ const User = db.users
 
 const login= async (req, res) => {
     const {username, password} = req.body;
+    console.log(req.body)
 
     User.findOne({where: {name: username, password: password}})
     .then(data => {

@@ -24,4 +24,26 @@
   .Posts-link {
     color: #61dafb;
   }
+
+  .Posts-p1 {
+    color: rgb(40, 70, 236);
+  }
+  .Posts-p {
+    color: rgba(219, 222, 236, 0.788);
+  }
+  .Posts-h5 {
+    color: rgba(69, 69, 71, 0.856);
+  }
+  .Post-padding {
+    padding-bottom: 5%;
+    padding-top: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+  .Post-width {
+    min-width:500px;
+  }
+  .Post-titlebg {
+    background-color: #282c35;
+  }
   

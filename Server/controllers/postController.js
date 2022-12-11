@@ -64,6 +64,10 @@ const getPost = async (req, res) => {
 }
 
 const updatePost = async (req, res) => {
+
+    console.log(req.user.role);
+    console.log(req.user);
+    console.log(req.user.role);
     if (req.user.role != "User" && req.user.role != "Admin") {
         res.status(403).send({
             message: "Page access is restricted."

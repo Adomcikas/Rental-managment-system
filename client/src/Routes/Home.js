@@ -1,12 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import AuthUser from "../services/AuthUser";
-import { useNavigate } from 'react-router-dom';
 
 function Home() {
 
-    const navigate = useNavigate();
-
-    const { getToken, getUser } = AuthUser();
+    const { getUser } = AuthUser();
 
     const login = () => {
         if(getUser() != null)

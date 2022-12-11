@@ -33,6 +33,7 @@ exports.authorization = async (req, res, next) => {
         const user = await Users.findByPk(decoded.id)
         if(!user || user.iat != decoded.iat)
         {
+            
             res.status(403).send({
                 message: "user is not logged in"
             });
@@ -44,6 +45,7 @@ exports.authorization = async (req, res, next) => {
         next();
 
     }else {
+        console.log("errorororor");
         res.status(403).json("You are not authenticated!");
         return;
     }
