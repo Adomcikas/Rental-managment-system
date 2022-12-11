@@ -23,10 +23,10 @@ function Home() {
 
         http.get(`/api/posts/${id1}/api/comments`).then((res) => {
             console.log(res.data.length)
-            res.data.forEach(comment => {
-                temp.push(comment)
-            })
-            setCommentArray(temp);
+            // res.data.forEach(comment => {
+            //     temp.push(comment)
+            // })
+            setCommentArray(res.data);
         }).catch(() => {
             alert("Klaida su komentais");
         });

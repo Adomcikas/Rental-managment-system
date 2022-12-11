@@ -18,7 +18,6 @@ function Home() {
             <div>
                 <h1>Hello</h1>
                 <p>Welcome to the home page</p>
-                <p><button onClick={login}> Login</button></p>
             </div>
         </section>
     );

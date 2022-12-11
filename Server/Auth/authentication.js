@@ -24,6 +24,7 @@ exports.generateToken = (user) => {
 exports.authorization = async (req, res, next) => {
     const authHeader = req.headers.authorization;
     const secret = 'MySecretKey';
+    
 
     if(authHeader) {
         const token = authHeader.split(" ")[1];
@@ -33,7 +34,7 @@ exports.authorization = async (req, res, next) => {
         const user = await Users.findByPk(decoded.id)
         if(!user || user.iat != decoded.iat)
         {
-            
+            console.log("arara");
             res.status(403).send({
                 message: "user is not logged in"
             });

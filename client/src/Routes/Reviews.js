@@ -5,6 +5,8 @@ import Review from "../components/Review"
 import './Posts.css';
 import { Card } from "flowbite-react";
 import { useNavigate } from 'react-router-dom';
+import './Posts.css';
+
 
 function Home() {
     const navigate = useNavigate();
@@ -17,6 +19,8 @@ function Home() {
     const [reviewArray, setReviewArray] = useState([]);
     const { http , getUser, getToken} = AuthUser();
     const [comment, setComment] = useState("");
+    const [rating, setRating] = useState(0);
+    const [hover, setHover] = useState(0);
 
     const temp = [];
 
@@ -25,10 +29,10 @@ function Home() {
         console.log(id1);
         console.log(id2);
         http.get(`/api/posts/${id1}/api/comments/${id2}/api/reviews`).then((res) => {
-            res.data.forEach(review => {
-                temp.push(review)
-            })
-            setReviewArray(temp);
+            // res.data.forEach(review => {
+            //     temp.push(review)
+            // })
+            setReviewArray(res.data);
         }).catch(() => {
             Navigate('/');
         })
@@ -43,6 +47,52 @@ function Home() {
         })
     };
 
+    const PostReview = async() => {
+        console.log("Posting");
+        console.log(id1);
+        console.log(id2);
+        console.log(rating);
+        const data = {
+            rating: rating,
+        }
+        http.post(`/api/posts/${id1}/api/comments/${id2}/api/reviews/`, data, {
+            headers: {
+                "Content-type": "application/json",
+                "Authorization": `Bearer ${getToken()}`
+            },
+        }).then((res) => {
+            navigate(`/api/posts/${id1}/api/comments/${id2}`);
+            
+        }).catch(() => {
+            //alert("Klaida su postais");
+        });
+
+    };
+
+    const StarRating = () => {
+
+        return (
+          <div className="star-rating">
+            {[...Array(11)].map((star, index) => {
+              index += -5;
+              return (
+                <button
+                  type="button"
+                  key={index}
+                  className={index <= (hover || rating) ? "on" : "off"}
+                  onClick={() => setRating(index)}
+                  onMouseEnter={() => setHover(index)}
+                  onMouseLeave={() => setHover(rating)}
+                >
+                
+                  <span className="star">&#9733;</span>
+                </button>
+              );
+            })}
+          </div>
+        );
+    };
+
     return(
 <section>
             {
@@ -53,6 +103,8 @@ function Home() {
                     </div>
                     <div class=" items-center justify-between mb-4">
                         <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Reviews</h5>
+
+                        
                     </div>
                     <div class="flow-root">
                         <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
@@ -65,7 +117,7 @@ function Home() {
                                             <div class="flex-1 min-w-0">
                                                 <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
                                                     <Review rating={review.rating} id1={id1} id2={id2} id3={review.id}/>
-                                                    {/* <Rating name="half-rating" defaultValue={2.5} precision={0.5} /> */}
+                                                    
                                                 </p>
                                             </div>
                                         </div>
@@ -74,25 +126,36 @@ function Home() {
                              }
                         </ul>
                     </div>
+                    {getUser() != null ?(
+                        <div>
+                        <tr>
+                            <th>
+                                <h5 style={{width: "100px", height: "50px"}}class="text-sm font-medium text-gray-900 truncate dark:text-white Post-padding">
+                                    Apply Review
+                                </h5>
+                            </th>
+                            <th>
+                                <h5 style={{width: "150px", height: "50px"}} class="text-sm font-medium text-gray-900 truncate dark:text-white Post-padding">
+                                    <StarRating />
+                                </h5>
+                            </th>
+                            <th>
+                                <h5 style={{width: "75px", height: "50px"}} class="text-sm font-medium text-gray-900 truncate dark:text-white Post-padding">
+                                    {rating}
+                                </h5>
+                            </th>
+                        </tr>
+                    </div>
+
+                    ) : null}
+                    
 
                     {getUser() != null ?(
                             <div>
-                                {/* <button type="button" onClick={CreateComment} class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Create Comment</button> */}
+                                <h5  >
+                                    <button type="button" onClick={PostReview} class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Save review</button>
+                                </h5>
                             </div>
-                            ) : null}
-                            {getUser() != null ?(
-                                <div>
-
-                                    <div>
-                                        <th>
-                                            {/* <div class="relative Post-padding">
-                                                <textarea type="text" id="floating_outlined" style={{width: '100%'}} onChange={(e) =>{SetCommentDescription(e.target.value)}} class="block  px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-400 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
-                                                <label for="floating_outlined"  className="absolute Post-titlebg text-sm text-gray-700 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white  px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Comment</label>
-                                            </div> */}
-                                        </th>
-                                    </div>
-
-                                </div>
                             ) : null}
                 </div>                  
             }

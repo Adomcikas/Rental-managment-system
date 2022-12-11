@@ -20,6 +20,9 @@ const addReview= async (req, res) => {
         });
         return;
     }
+    console.log(req.body.rating);
+    console.log(req.params.id2);
+    console.log(req.user.id);
     let info = {
         rating: req.body.rating,
         commentId: req.params.id2,
