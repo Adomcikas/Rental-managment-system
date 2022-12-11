@@ -46,4 +46,11 @@
   .Post-titlebg {
     background-color: #282c35;
   }
+  .Post-AlignRight {
+    text-align: right;
+  }
+  .Post-AlignCenter {
+    text-align: center;
+    justify-content: center;
+  }
   
