@@ -38,5 +38,5 @@ Sistemos sudedamos dalys:
 
 ![alt text](https://github.com/Adomcikas/Rental-managment-system/blob/main/DeploymentDiagrama.jpg?raw=true)
 
-##Headers (Underline)
-Naudotojo sąsajos projektas
+### Naudotojo sąsajos projektas
+
