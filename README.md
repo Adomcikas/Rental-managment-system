@@ -56,7 +56,7 @@ Sistemos sudedamos dalys:
 ![alt text](https://github.com/Adomcikas/Rental-managment-system/blob/main/wireframes/Realization/Posts_User.png?raw=true)
 ### vieno post langas
 > Wireframe
-![alt text](https://github.com/Adomcikas/Rental-managment-system/blob/main/wireframes/7-Single-post.png?raw=true)
+![alt text](https://github.com/Adomcikas/Rental-managment-system/blob/main/wireframes/5-Single-post.png?raw=true)
 > Realizacija
 ![alt text](https://github.com/Adomcikas/Rental-managment-system/blob/main/wireframes/Realization/singlePost.png?raw=true)
 ### vieno post visu komentaru langas
