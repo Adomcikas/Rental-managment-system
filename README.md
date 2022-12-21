@@ -79,3 +79,119 @@ Sistemos sudedamos dalys:
 ![alt text](https://github.com/Adomcikas/Rental-managment-system/blob/main/wireframes/7-Single-review.png?raw=true)
 > Realizacija
 ![alt text](https://github.com/Adomcikas/Rental-managment-system/blob/main/wireframes/Realization/SingleReview.png?raw=true)
+### Home langas
+> Wireframe
+![alt text](https://github.com/Adomcikas/Rental-managment-system/blob/main/wireframes/1-Homepage.png?raw=true)
+> Realizacija
+![alt text](https://github.com/Adomcikas/Rental-managment-system/blob/main/wireframes/Realization/home.png?raw=true)
+
+## API specifikacija
+### Post /api/posts
+#### Resource URL
+#### Resource Information
+#### Parameters
+#### Example Request
+#### Example Response
+### Get /api/posts
+#### Resource URL
+#### Resource Information
+#### Parameters
+#### Example Request
+#### Example Response
+### Get /api/posts/:id
+#### Resource URL
+#### Resource Information
+#### Parameters
+#### Example Request
+#### Example Response
+### Put /api/posts/:id
+#### Resource URL
+#### Resource Information
+#### Parameters
+#### Example Request
+#### Example Response
+### Delete /api/posts/:id
+#### Resource URL
+#### Resource Information
+#### Parameters
+#### Example Request
+#### Example Response
+### Post /api/posts/:id1/api/comments
+#### Resource URL
+#### Resource Information
+#### Parameters
+#### Example Request
+#### Example Response
+### Get /api/posts/:id1/api/comments
+#### Resource URL
+#### Resource Information
+#### Parameters
+#### Example Request
+#### Example Response
+### Get /api/posts/:id1/api/comments/id2
+#### Resource URL
+#### Resource Information
+#### Parameters
+#### Example Request
+#### Example Response
+### Put /api/posts/:id1/api/comments/id2
+#### Resource URL
+#### Resource Information
+#### Parameters
+#### Example Request
+#### Example Response
+### Delete /api/posts/:id1/api/comments/id2
+#### Resource URL
+#### Resource Information
+#### Parameters
+#### Example Request
+#### Example Response
+### Post /api/posts/:id1/api/comments/id2/api/reviews
+#### Resource URL
+#### Resource Information
+#### Parameters
+#### Example Request
+#### Example Response
+### Get /api/posts/:id1/api/comments/id2/api/reviews
+#### Resource URL
+#### Resource Information
+#### Parameters
+#### Example Request
+#### Example Response
+### Get /api/posts/:id1/api/comments/id2/api/reviews/:id3
+#### Resource URL
+#### Resource Information
+#### Parameters
+#### Example Request
+#### Example Response
+### Put /api/posts/:id1/api/comments/id2/api/reviews/:id3
+#### Resource URL
+#### Resource Information
+#### Parameters
+#### Example Request
+#### Example Response
+### Delete /api/posts/:id1/api/comments/id2/api/reviews/:id3
+#### Resource URL
+#### Resource Information
+#### Parameters
+#### Example Request
+#### Example Response
+### Post /register
+#### Resource URL
+#### Resource Information
+#### Parameters
+#### Example Request
+#### Example Response
+### Post /login
+#### Resource URL
+#### Resource Information
+#### Parameters
+#### Example Request
+#### Example Response
+### Get /logout
+#### Resource URL
+#### Resource Information
+#### Parameters
+#### Example Request
+#### Example Response
+## Išvados
