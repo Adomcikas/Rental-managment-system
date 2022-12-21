@@ -38,5 +38,44 @@ Sistemos sudedamos dalys:
 
 ![alt text](https://github.com/Adomcikas/Rental-managment-system/blob/main/DeploymentDiagrama.jpg?raw=true)
 
-### Naudotojo sąsajos projektas
-
+## Naudotojo sąsajos projektas
+### Login langas
+> Wireframe
+![alt text](https://github.com/Adomcikas/Rental-managment-system/blob/main/wireframes/2-Login-.png?raw=true)
+> Realizacija
+![alt text](https://github.com/Adomcikas/Rental-managment-system/blob/main/wireframes/Realization/Login.png?raw=true)
+### Register langas
+> Wireframe
+![alt text](https://github.com/Adomcikas/Rental-managment-system/blob/main/wireframes/3-Register.png?raw=true)
+> Realizacija
+![alt text](https://github.com/Adomcikas/Rental-managment-system/blob/main/wireframes/Realization/register.png?raw=true)
+### visu posts langas
+> Wireframe
+![alt text](https://github.com/Adomcikas/Rental-managment-system/blob/main/wireframes/4-Posts.png?raw=true)
+> Realizacija
+![alt text](https://github.com/Adomcikas/Rental-managment-system/blob/main/wireframes/Realization/Posts_User.png?raw=true)
+### vieno post langas
+> Wireframe
+![alt text](https://github.com/Adomcikas/Rental-managment-system/blob/main/wireframes/7-Single-post.png?raw=true)
+> Realizacija
+![alt text](https://github.com/Adomcikas/Rental-managment-system/blob/main/wireframes/Realization/singlePost.png?raw=true)
+### vieno post visu komentaru langas
+> Wireframe
+![alt text](https://github.com/Adomcikas/Rental-managment-system/blob/main/wireframes/8-Comments.png?raw=true)
+> Realizacija
+![alt text](https://github.com/Adomcikas/Rental-managment-system/blob/main/wireframes/Realization/Comments.png?raw=true)
+### vieno komentaro langas
+> Wireframe
+![alt text](https://github.com/Adomcikas/Rental-managment-system/blob/main/wireframes/9-Single-comment.png?raw=true)
+> Realizacija
+![alt text](https://github.com/Adomcikas/Rental-managment-system/blob/main/wireframes/Realization/SingleComment.png?raw=true)
+### visu reviews langas
+> Wireframe
+![alt text](https://github.com/Adomcikas/Rental-managment-system/blob/main/wireframes/6-reviews.png?raw=true)
+> Realizacija
+![alt text](https://github.com/Adomcikas/Rental-managment-system/blob/main/wireframes/Realization/Reviews.png?raw=true)
+### vieno review langas
+> Wireframe
+![alt text](https://github.com/Adomcikas/Rental-managment-system/blob/main/wireframes/7-Single-review.png?raw=true)
+> Realizacija
+![alt text](https://github.com/Adomcikas/Rental-managment-system/blob/main/wireframes/Realization/SingleReview.png?raw=true)
