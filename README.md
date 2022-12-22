@@ -87,33 +87,69 @@ Sistemos sudedamos dalys:
 
 ## API specifikacija
 ### Post /api/posts
-####
+#### Sukuria nauja skelbima, gali pasiekti tik autentifikuoti žmonės
+#### Resource URL
+##### `https://rental-management-sytem.herokuapp.com/api/posts`
+#### Resource Information
+| response formats  | JSON |
+| requires authentication | Yes |
+| possible error codes | 403,201,400 |
+#### Parameters
+|     Name      |    Required   |  Description  | Default value |    Example    |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| title  | yes  | post title  |   | Butas Kaune  |
+| price  | yes  | post price  |   | 150  |
+| address  | yes  | post address  |   | Kestucio g.8  |
+| description  | yes  | post description  |   | Naujos statybos  |
+#### Example Request
+##### `https://rental-management-sytem.herokuapp.com/api/posts`
+`title='Butas Kaune'
+ price=150
+ address='Kestucio g.8'
+ description='Naujos statybos'
+ authorization: Bearer Token`
+#### Example Response
+`{
+    "user": {
+        "id": 20,
+        "name": "admin",
+        "password": "admin",
+        "email": "admin@a.com",
+        "role": "Admin",
+        "iat": 1671659227,
+        "createdAt": null,
+        "updatedAt": "2022-12-21T21:47:07.000Z"
+    },
+    "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsImVtYWlsIjoiYWRtaW5AYS5jb20iLCJyb2xlIjoiQWRtaW4iLCJpYXQiOjE2NzE3MDAzMDksImV4cCI6MTY3MTc4NjcwOX0.-xPKTs6Vry36aoYM37R-F-1DLrvAwWvLd4AuJMpdgfw"
+}`
+### Get /api/posts
+#### Gauna visus skelbimus iš duomenų bazės, gali pasiekti neautentifikuoti žmonės
 #### Resource URL
 `https://rental-management-sytem.herokuapp.com/api/posts`
 #### Resource Information
 #### Parameters
 #### Example Request
 #### Example Response
-### Get /api/posts
-#### Resource URL
-#### Resource Information
-#### Parameters
-#### Example Request
-#### Example Response
 ### Get /api/posts/:id
+#### Gaunamas konkretus skelbimas pagal id, gali pasiekti neautentifikuoti žmonės
 #### Resource URL
+`https://rental-management-sytem.herokuapp.com/api/posts/:id`
 #### Resource Information
 #### Parameters
 #### Example Request
 #### Example Response
 ### Put /api/posts/:id
+#### Koreguojamas skelbimas, galima tik autentifikuotiems žmonėms
 #### Resource URL
+`https://rental-management-sytem.herokuapp.com/api/posts/:id`
 #### Resource Information
 #### Parameters
 #### Example Request
 #### Example Response
 ### Delete /api/posts/:id
+#### Ištrinamas skelbimas, galima tik autentifikuotiems žmonėms
 #### Resource URL
+`https://rental-management-sytem.herokuapp.com/api/posts/:id`
 #### Resource Information
 #### Parameters
 #### Example Request
