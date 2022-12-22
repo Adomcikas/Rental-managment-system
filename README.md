@@ -94,8 +94,8 @@ Sistemos sudedamos dalys:
 
 | response formats  | JSON |
 | ------------- | ------------- |
-| **requires authentication | Yes |
-| possible error codes | 403,201,400** |
+| **requires authentication** | **Yes** |
+| **possible error codes** | **403,201,400** |
 
 #### Parameters
 |     Name      |    Required   |  Description  | Default value |    Example    |
