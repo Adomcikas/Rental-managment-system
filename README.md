@@ -210,7 +210,11 @@ Sistemos sudedamos dalys:
 | id  | yes  | id of the post  |   | 17  |
 #### Example Request
  `Put POST https://rental-management-sytem.herokuapp.com/api/posts/17
-    authorization: Bearer Token`
+  title='Keiciamas title
+  price=200
+  address='Kestucio g.8'
+  description='Naujos statybos'
+  authorization: Bearer Token`
 #### Example Response
 ```json
     {
@@ -292,8 +296,21 @@ Sistemos sudedamos dalys:
 | ------------- | ------------- | ------------- | ------------- | ------------- |
 | id1  | yes  | id of the post  |   | 24  |
 #### Example Request
+`GET https://rental-management-sytem.herokuapp.com/api/posts/24/api/comments`
 #### Example Response
-
+```json
+[
+    {
+        "id": 18,
+        "description": "Tikrai grazus vaizdas pro langa ir tikrai nebrangus butas",
+        "createdAt": "2022-12-22T09:59:45.000Z",
+        "updatedAt": "2022-12-22T09:59:45.000Z",
+        "postId": 24,
+        "userId": 20
+    },
+    ...
+]
+```
 ### Get /api/posts/:id1/api/comments/:id2
 #### Gaunamas konkretus komentaras tam tikro skelbimo
 #### Resource URL
@@ -309,8 +326,18 @@ Sistemos sudedamos dalys:
 | id1  | yes  | id of the post  |   | 24  |
 | id2  | yes  | id of the comment  |   | 18  |
 #### Example Request
+`GET https://rental-management-sytem.herokuapp.com/api/posts/24/api/comments/18`
 #### Example Response
-
+```json
+{
+    "id": 18,
+    "description": "Tikrai grazus vaizdas pro langa ir tikrai nebrangus butas",
+    "createdAt": "2022-12-22T09:59:45.000Z",
+    "updatedAt": "2022-12-22T09:59:45.000Z",
+    "postId": 24,
+    "userId": 20
+}
+```
 ### Put /api/posts/:id1/api/comments/:id2
 #### keičiamas komentaras pagal id2, tik autentifikuoti žmonės gali pasiekti
 #### Resource URL
@@ -327,8 +354,15 @@ Sistemos sudedamos dalys:
 | id2  | yes  | id of the comment  |   | 18  |
 | description  | yes  | post description  |   | Naujos komentaras  |
 #### Example Request
+`PUT https://rental-management-sytem.herokuapp.com/api/posts/24/api/comments/18`
+`description='Naujas description'
+ authorization: Bearer Token`
 #### Example Response
-
+```json
+{
+    "message": "Updated"
+}
+```
 ### Delete /api/posts/:id1/api/comments/:id2
 #### ištrinamas komentaras pagal id2, tik autentifikuoti žmonės gali pasiekti
 #### Resource URL
@@ -342,10 +376,14 @@ Sistemos sudedamos dalys:
 |     Name      |    Required   |  Description  | Default value |    Example    |
 | ------------- | ------------- | ------------- | ------------- | ------------- |
 | id1  | yes  | id of the post  |   | 24  |
-| id2  | yes  | id of the comment  |   | 18  |
+| id2  | yes  | id of the comment  |   | 19  |
 #### Example Request
+`DELETE https://rental-management-sytem.herokuapp.com/api/posts/24/api/comments/19`
+`authorization: Bearer Token`
 #### Example Response
-
+```json
+null
+```
 ### Post /api/posts/:id1/api/comments/:id2/api/reviews
 #### sukuriamas  naujas ivertinimas konkrečiam komentarui, gali irašyti įvertinimą tik autentifikuoti žmonės
 #### Resource URL
@@ -362,8 +400,20 @@ Sistemos sudedamos dalys:
 | id2  | yes  | id of the comment  |   | 18  |
 | rating  | yes  | rating of the comment  |   | 3  |
 #### Example Request
+`POST https://rental-management-sytem.herokuapp.com/api/posts/24/api/comments/18/api/reviews`
+`rating=3
+ authorization: Bearer Token`
 #### Example Response
-
+```json
+{
+    "id": 18,
+    "rating": "3",
+    "commentId": "18",
+    "userId": 20,
+    "updatedAt": "2022-12-22T10:28:23.569Z",
+    "createdAt": "2022-12-22T10:28:23.569Z"
+}
+```
 ### Get /api/posts/:id1/api/comments/:id2/api/reviews
 #### gaunami visi ivertinimai konkretaus komentaro
 #### Resource URL
@@ -379,8 +429,21 @@ Sistemos sudedamos dalys:
 | id1  | yes  | id of the post  |   | 24  |
 | id2  | yes  | id of the comment  |   | 18  |
 #### Example Request
+`GET https://rental-management-sytem.herokuapp.com/api/posts/24/api/comments/18/api/reviews`
 #### Example Response
-
+```json
+[
+    {
+        "id": 18,
+        "rating": 3,
+        "createdAt": "2022-12-22T10:28:23.000Z",
+        "updatedAt": "2022-12-22T10:28:23.000Z",
+        "commentId": 18,
+        "userId": 20
+    },
+    ...
+]
+```
 ### Get /api/posts/:id1/api/comments/:id2/api/reviews/:id3
 #### gaunamas konkretus įvertinimas pasirinkto komentaro(id2)
 #### Resource URL
@@ -397,8 +460,18 @@ Sistemos sudedamos dalys:
 | id2  | yes  | id of the comment  |   | 18  |
 | id3  | yes  | id of the review  |   | 18  |
 #### Example Request
+`GET https://rental-management-sytem.herokuapp.com/api/posts/24/api/comments/18/api/reviews/18`
 #### Example Response
-
+```json
+{
+    "id": 18,
+    "rating": 3,
+    "createdAt": "2022-12-22T10:28:23.000Z",
+    "updatedAt": "2022-12-22T10:28:23.000Z",
+    "commentId": 18,
+    "userId": 20
+}
+```
 ### Put /api/posts/:id1/api/comments/id2/api/reviews/:id3
 #### redaguojamas įvertinimas pagal įvertinimo id3, pasiekiama tik autentifikuotiems žmonės
 #### Resource URL
@@ -416,8 +489,15 @@ Sistemos sudedamos dalys:
 | id3  | yes  | id of the review  |   | 18  |
 | rating  | yes  | rating of the comment  |   | 4  |
 #### Example Request
+`PUT https://rental-management-sytem.herokuapp.com/api/posts/24/api/comments/18/api/reviews/18`
+`rating=4
+ authorization: Bearer Token`
 #### Example Response
-
+```json
+{
+    "message": "updated"
+}
+```
 ### Delete /api/posts/:id1/api/comments/id2/api/reviews/:id3
 #### ištrinamas įvertinimas pagal įvertinimo id3, pasiekiama tik autentifikuotiems žmonės
 #### Resource URL
@@ -434,8 +514,12 @@ Sistemos sudedamos dalys:
 | id2  | yes  | id of the comment  |   | 18  |
 | id3  | yes  | id of the review  |   | 18  |
 #### Example Request
+`DELETE https://rental-management-sytem.herokuapp.com/api/posts/24/api/comments/18/api/reviews/18`
+`authorization: Bearer Token`
 #### Example Response
-
+```json
+null
+```
 ### Post /register
 #### užregistruoja naudotoja
 #### Resource URL
@@ -450,10 +534,26 @@ Sistemos sudedamos dalys:
 | ------------- | ------------- | ------------- | ------------- | ------------- |
 | username  | yes  | username of a person  |   | John  |
 | password  | yes  | password to login to the website  |   | Johnson  |
-| email  | yes  | user email  |   | john.Johnson@gmail.com  |
+| email  | yes  | user email  |   | johnJohnson@gmail.com  |
 #### Example Request
+`POST https://rental-management-sytem.herokuapp.com/register
+ username='John'
+ password='Johnson'
+ email='johnJohnson@gmail.com'`
 #### Example Response
-
+```json
+{
+    "user": {
+        "role": "User",
+        "id": 25,
+        "name": "John",
+        "email": "johnJohnson@gmail.com",
+        "updatedAt": "2022-12-22T10:53:23.722Z",
+        "createdAt": "2022-12-22T10:53:23.722Z"
+    },
+    "token": {token}
+}
+```
 ### Post /login
 #### prijungia konkretu naudotoja
 #### Resource URL
@@ -469,8 +569,25 @@ Sistemos sudedamos dalys:
 | username  | yes  | username of a person  |   | John  |
 | password  | yes  | password of that username  |   | Johnson  |
 #### Example Request
+`POST https://rental-management-sytem.herokuapp.com/login`
+`username='John'
+ password='Johnson'`
 #### Example Response
-
+```json
+{
+    "user": {
+        "id": 25,
+        "name": "John",
+        "password": "johnson",
+        "email": "johnJohnson@gmail.com",
+        "role": "User",
+        "iat": {integer},
+        "createdAt": "2022-12-22T10:53:23.000Z",
+        "updatedAt": "2022-12-22T10:53:24.000Z"
+    },
+    "access_token": {token}
+}
+```
 ### Get /logout
 #### atjungia naudotoja nuo svetaines
 #### Resource URL
@@ -484,5 +601,12 @@ Sistemos sudedamos dalys:
 |     none      |
 | ------------- |
 #### Example Request
+`GET https://rental-management-sytem.herokuapp.com/logout`
+`authorization: Bearer Token`
 #### Example Response
+```json
+{
+    "message": "User logged out successfully."
+}
+```
 ## Išvados
