@@ -93,7 +93,7 @@ Sistemos sudedamos dalys:
 #### Resource Information
 
 | response formats  | JSON |
-| ------------- | ------------- |
+| :-------------: | :-------------: |
 | **requires authentication** | **Yes** |
 | **possible error codes** | **403,201,400** |
 
@@ -105,7 +105,7 @@ Sistemos sudedamos dalys:
 | address  | yes  | post address  |   | Kestucio g.8  |
 | description  | yes  | post description  |   | Naujos statybos  |
 #### Example Request
-##### `https://rental-management-sytem.herokuapp.com/api/posts`
+##### `POST https://rental-management-sytem.herokuapp.com/api/posts`
 `title='Butas Kaune'
  price=150
  address='Kestucio g.8'
@@ -130,25 +130,101 @@ Sistemos sudedamos dalys:
 #### Resource URL
 `https://rental-management-sytem.herokuapp.com/api/posts`
 #### Resource Information
+| response formats  | JSON |
+| :-------------: | :-------------: |
+| **requires authentication** | **No** |
+| **possible error codes** | **200,500** |
+
 #### Parameters
+|     None    |
+| ------------- |
+
 #### Example Request
+##### `GET https://rental-management-sytem.herokuapp.com/api/posts`
 #### Example Response
+```json
+[
+    {
+        "id": 17,
+        "title": "Lorem ipsum accumsan",
+        "price": 150,
+        "address": "Lorem ipsum accumsan",
+        "description": "Lorem ipsum accumsan",
+        "approved": false,
+        "createdAt": "2022-12-11T19:42:51.000Z",
+        "updatedAt": "2022-12-12T07:16:42.000Z",
+        "userId": 18
+    },
+    ...
+]
+```
 ### Get /api/posts/:id
 #### Gaunamas konkretus skelbimas pagal id, gali pasiekti neautentifikuoti žmonės
 #### Resource URL
 `https://rental-management-sytem.herokuapp.com/api/posts/:id`
 #### Resource Information
+
+| response formats  | JSON |
+| :-------------: | :-------------: |
+| **requires authentication** | **Yes** |
+| **possible error codes** | **200,404,500** |
+
 #### Parameters
+|     Name      |    Required   |  Description  | Default value |    Example    |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| id  | yes  | id of the post  |   | 17  |
 #### Example Request
+##### `GET POST https://rental-management-sytem.herokuapp.com/api/posts/17`
 #### Example Response
+```json
+    {
+        "id": 17,
+        "title": "Lorem ipsum accumsan",
+        "price": 150,
+        "address": "Lorem ipsum accumsan",
+        "description": "Lorem ipsum accumsan",
+        "approved": false,
+        "createdAt": "2022-12-11T19:42:51.000Z",
+        "updatedAt": "2022-12-12T07:16:42.000Z",
+        "userId": 18
+    }
+```
 ### Put /api/posts/:id
 #### Koreguojamas skelbimas, galima tik autentifikuotiems žmonėms
 #### Resource URL
 `https://rental-management-sytem.herokuapp.com/api/posts/:id`
 #### Resource Information
+
+| response formats  | JSON |
+| :-------------: | :-------------: |
+| **requires authentication** | **Yes** |
+| **possible error codes** | **201,404,400,403** |
+
 #### Parameters
+|     Name      |    Required   |  Description  | Default value |    Example    |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| title  | yes  | post title  |   | Keiciamas title  |
+| price  | yes  | post price  |   | 200  |
+| address  | yes  | post address  |   | Kestucio g.8  |
+| description  | yes  | post description  |   | Naujos statybos  |
+| id  | yes  | id of the post  |   | 17  |
 #### Example Request
+ `GET POST https://rental-management-sytem.herokuapp.com/api/posts/17`
+`authorization: Bearer Token`
 #### Example Response
+```json
+    {
+        "id": 17,
+        "title": "Keiciamas title",
+        "price": 200,
+        "address": "Kestucio g.8",
+        "description": "Naujos statybos",
+        "approved": false,
+        "createdAt": "2022-12-11T19:42:51.000Z",
+        "updatedAt": "2022-12-12T07:16:42.000Z",
+        "userId": 18
+    }
+```
 ### Delete /api/posts/:id
 #### Ištrinamas skelbimas, galima tik autentifikuotiems žmonėms
 #### Resource URL
