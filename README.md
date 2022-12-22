@@ -230,9 +230,23 @@ Sistemos sudedamos dalys:
 #### Resource URL
 `https://rental-management-sytem.herokuapp.com/api/posts/:id`
 #### Resource Information
+
+| response formats  | JSON |
+| :-------------: | :-------------: |
+| **requires authentication** | **Yes** |
+| **possible error codes** | **204,500,403** |
+
 #### Parameters
+|     Name      |    Required   |  Description  | Default value |    Example    |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| id  | yes  | id of the post  |   | 17  |
 #### Example Request
+ `Put DELETE https://rental-management-sytem.herokuapp.com/api/posts/17
+    authorization: Bearer Token`
 #### Example Response
+```json
+    null
+```
 ### Post /api/posts/:id1/api/comments
 #### Resource URL
 #### Resource Information
