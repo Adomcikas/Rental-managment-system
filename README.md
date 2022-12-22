@@ -112,11 +112,11 @@ Sistemos sudedamos dalys:
 ```json
 {
     "approved": false,
-    "id": 23,
-    "title": "Butas kauno miesto centre",
-    "price": "10",
-    "address": "Kauno miesto centras Kestucio g. 8",
-    "description": "Naujos statybos butas netoli kauno pilies",
+    "id": 1,
+    "title": "Butas Kaune",
+    "price": "150",
+    "address": "Kestucio g.8",
+    "description": "Naujos statybos",
     "userId": 20,
     "updatedAt": "2022-12-22T09:14:01.605Z",
     "createdAt": "2022-12-22T09:14:01.605Z"
