@@ -166,7 +166,7 @@ Sistemos sudedamos dalys:
 
 | response formats  | JSON |
 | :-------------: | :-------------: |
-| **requires authentication** | **Yes** |
+| **requires authentication** | **No** |
 | **possible error codes** | **200,404,500** |
 
 #### Parameters
@@ -249,80 +249,240 @@ Sistemos sudedamos dalys:
 ```
 ### Post /api/posts/:id1/api/comments
 #### Resource URL
+`https://rental-management-sytem.herokuapp.com/api/posts/:id1/api/comments`
 #### Resource Information
+
+| response formats  | JSON |
+| :-------------: | :-------------: |
+| **requires authentication** | **Yes** |
+| **possible error codes** | **403,404,201,400** |
+
 #### Parameters
+|     Name      |    Required   |  Description  | Default value |    Example    |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| description  | yes  | edited post description  |   | Naujos statybos naujas  |
+| id1  | yes  | id of the post comment belongs to  |   | 24  |
 #### Example Request
+##### `POST https://rental-management-sytem.herokuapp.com/api/posts/24/api/comments`
+`description='Naujos statybos naujas'
+ authorization: Bearer Token`
 #### Example Response
+```json
+{
+    "id": 18,
+    "description": "Naujos statybos naujas",
+    "postId": "24",
+    "userId": 20,
+    "updatedAt": "2022-12-22T09:59:45.181Z",
+    "createdAt": "2022-12-22T09:59:45.181Z"
+}
+```
+
 ### Get /api/posts/:id1/api/comments
+#### Gaunami visi komentarai konkretaus skelbimo
 #### Resource URL
+`https://rental-management-sytem.herokuapp.com/api/posts/:id1/api/comments`
 #### Resource Information
+| response formats  | JSON |
+| :-------------: | :-------------: |
+| **requires authentication** | **No** |
+| **possible error codes** | **200,404,500** |
 #### Parameters
+|     Name      |    Required   |  Description  | Default value |    Example    |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| id1  | yes  | id of the post  |   | 24  |
 #### Example Request
 #### Example Response
-### Get /api/posts/:id1/api/comments/id2
+
+### Get /api/posts/:id1/api/comments/:id2
+#### Gaunamas konkretus komentaras tam tikro skelbimo
 #### Resource URL
+`https://rental-management-sytem.herokuapp.com/api/posts/:id1/api/comments/:id2`
 #### Resource Information
+| response formats  | JSON |
+| :-------------: | :-------------: |
+| **requires authentication** | **No** |
+| **possible error codes** | **200,404,500** |
 #### Parameters
+|     Name      |    Required   |  Description  | Default value |    Example    |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| id1  | yes  | id of the post  |   | 24  |
+| id2  | yes  | id of the comment  |   | 18  |
 #### Example Request
 #### Example Response
-### Put /api/posts/:id1/api/comments/id2
+
+### Put /api/posts/:id1/api/comments/:id2
+#### keičiamas komentaras pagal id2, tik autentifikuoti žmonės gali pasiekti
 #### Resource URL
+`https://rental-management-sytem.herokuapp.com/api/posts/:id1/api/comments/:id2`
 #### Resource Information
+| response formats  | JSON |
+| :-------------: | :-------------: |
+| **requires authentication** | **Yes** |
+| **possible error codes** | **403,404,200,400** |
 #### Parameters
+|     Name      |    Required   |  Description  | Default value |    Example    |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| id1  | yes  | id of the post  |   | 24  |
+| id2  | yes  | id of the comment  |   | 18  |
+| description  | yes  | post description  |   | Naujos komentaras  |
 #### Example Request
 #### Example Response
-### Delete /api/posts/:id1/api/comments/id2
+
+### Delete /api/posts/:id1/api/comments/:id2
+#### ištrinamas komentaras pagal id2, tik autentifikuoti žmonės gali pasiekti
 #### Resource URL
+`https://rental-management-sytem.herokuapp.com/api/posts/:id1/api/comments/:id2`
 #### Resource Information
+| response formats  | JSON |
+| :-------------: | :-------------: |
+| **requires authentication** | **Yes** |
+| **possible error codes** | **403,404,204,500** |
 #### Parameters
+|     Name      |    Required   |  Description  | Default value |    Example    |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| id1  | yes  | id of the post  |   | 24  |
+| id2  | yes  | id of the comment  |   | 18  |
 #### Example Request
 #### Example Response
-### Post /api/posts/:id1/api/comments/id2/api/reviews
+
+### Post /api/posts/:id1/api/comments/:id2/api/reviews
+#### sukuriamas  naujas ivertinimas konkrečiam komentarui, gali irašyti įvertinimą tik autentifikuoti žmonės
 #### Resource URL
+`https://rental-management-sytem.herokuapp.com/api/posts/:id1/api/comments/:id2/api/reviews/`
 #### Resource Information
+| response formats  | JSON |
+| :-------------: | :-------------: |
+| **requires authentication** | **Yes** |
+| **possible error codes** | **403,404,201,400** |
 #### Parameters
+|     Name      |    Required   |  Description  | Default value |    Example    |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| id1  | yes  | id of the post  |   | 24  |
+| id2  | yes  | id of the comment  |   | 18  |
+| rating  | yes  | rating of the comment  |   | 3  |
 #### Example Request
 #### Example Response
-### Get /api/posts/:id1/api/comments/id2/api/reviews
+
+### Get /api/posts/:id1/api/comments/:id2/api/reviews
+#### gaunami visi ivertinimai konkretaus komentaro
 #### Resource URL
+`https://rental-management-sytem.herokuapp.com/api/posts/:id1/api/comments/:id2/api/reviews/`
 #### Resource Information
+| response formats  | JSON |
+| :-------------: | :-------------: |
+| **requires authentication** | **No** |
+| **possible error codes** | **404,200,500** |
 #### Parameters
+|     Name      |    Required   |  Description  | Default value |    Example    |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| id1  | yes  | id of the post  |   | 24  |
+| id2  | yes  | id of the comment  |   | 18  |
 #### Example Request
 #### Example Response
-### Get /api/posts/:id1/api/comments/id2/api/reviews/:id3
+
+### Get /api/posts/:id1/api/comments/:id2/api/reviews/:id3
+#### gaunamas konkretus įvertinimas pasirinkto komentaro(id2)
 #### Resource URL
+`https://rental-management-sytem.herokuapp.com/api/posts/:id1/api/comments/:id2/api/reviews/:id3`
 #### Resource Information
+| response formats  | JSON |
+| :-------------: | :-------------: |
+| **requires authentication** | **No** |
+| **possible error codes** | **404,200,500** |
 #### Parameters
+|     Name      |    Required   |  Description  | Default value |    Example    |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| id1  | yes  | id of the post  |   | 24  |
+| id2  | yes  | id of the comment  |   | 18  |
+| id3  | yes  | id of the review  |   | 18  |
 #### Example Request
 #### Example Response
+
 ### Put /api/posts/:id1/api/comments/id2/api/reviews/:id3
+#### redaguojamas įvertinimas pagal įvertinimo id3, pasiekiama tik autentifikuotiems žmonės
 #### Resource URL
+`https://rental-management-sytem.herokuapp.com/api/posts/:id1/api/comments/:id2/api/reviews/:id3`
 #### Resource Information
+| response formats  | JSON |
+| :-------------: | :-------------: |
+| **requires authentication** | **Yes** |
+| **possible error codes** | **403,404,200,400** |
 #### Parameters
+|     Name      |    Required   |  Description  | Default value |    Example    |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| id1  | yes  | id of the post  |   | 24  |
+| id2  | yes  | id of the comment  |   | 18  |
+| id3  | yes  | id of the review  |   | 18  |
+| rating  | yes  | rating of the comment  |   | 4  |
 #### Example Request
 #### Example Response
+
 ### Delete /api/posts/:id1/api/comments/id2/api/reviews/:id3
+#### ištrinamas įvertinimas pagal įvertinimo id3, pasiekiama tik autentifikuotiems žmonės
 #### Resource URL
+`https://rental-management-sytem.herokuapp.com/api/posts/:id1/api/comments/:id2/api/reviews/:id3`
 #### Resource Information
+| response formats  | JSON |
+| :-------------: | :-------------: |
+| **requires authentication** | **Yes** |
+| **possible error codes** | **403,404,204,400** |
 #### Parameters
+|     Name      |    Required   |  Description  | Default value |    Example    |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| id1  | yes  | id of the post  |   | 24  |
+| id2  | yes  | id of the comment  |   | 18  |
+| id3  | yes  | id of the review  |   | 18  |
 #### Example Request
 #### Example Response
+
 ### Post /register
+#### užregistruoja naudotoja
 #### Resource URL
+`https://rental-management-sytem.herokuapp.com/register`
 #### Resource Information
+| response formats  | JSON |
+| :-------------: | :-------------: |
+| **requires authentication** | **No** |
+| **possible error codes** | **201,400** |
 #### Parameters
+|     Name      |    Required   |  Description  | Default value |    Example    |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| username  | yes  | username of a person  |   | John  |
+| password  | yes  | password to login to the website  |   | Johnson  |
+| email  | yes  | user email  |   | john.Johnson@gmail.com  |
 #### Example Request
 #### Example Response
+
 ### Post /login
+#### prijungia konkretu naudotoja
 #### Resource URL
+`https://rental-management-sytem.herokuapp.com/login`
 #### Resource Information
+| response formats  | JSON |
+| :-------------: | :-------------: |
+| **requires authentication** | **No** |
+| **possible error codes** | **200,500** |
 #### Parameters
+|     Name      |    Required   |  Description  | Default value |    Example    |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| username  | yes  | username of a person  |   | John  |
+| password  | yes  | password of that username  |   | Johnson  |
 #### Example Request
 #### Example Response
+
 ### Get /logout
+#### atjungia naudotoja nuo svetaines
 #### Resource URL
+`https://rental-management-sytem.herokuapp.com/logout`
 #### Resource Information
+| response formats  | JSON |
+| :-------------: | :-------------: |
+| **requires authentication** | **Yes** |
+| **possible error codes** | **200,401** |
 #### Parameters
+|     none      |
+| ------------- |
 #### Example Request
 #### Example Response
 ## Išvados
