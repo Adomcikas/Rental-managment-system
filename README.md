@@ -87,7 +87,9 @@ Sistemos sudedamos dalys:
 
 ## API specifikacija
 ### Post /api/posts
+####
 #### Resource URL
+`https://rental-management-sytem.herokuapp.com/api/posts`
 #### Resource Information
 #### Parameters
 #### Example Request
