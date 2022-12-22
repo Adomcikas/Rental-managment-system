@@ -109,19 +109,17 @@ Sistemos sudedamos dalys:
  description='Naujos statybos'
  authorization: Bearer Token`
 #### Example Response
-`{
-    "user": {
-        "id": 20,
-        "name": "admin",
-        "password": "admin",
-        "email": "admin@a.com",
-        "role": "Admin",
-        "iat": 1671659227,
-        "createdAt": null,
-        "updatedAt": "2022-12-21T21:47:07.000Z"
-    },
-    "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsImVtYWlsIjoiYWRtaW5AYS5jb20iLCJyb2xlIjoiQWRtaW4iLCJpYXQiOjE2NzE3MDAzMDksImV4cCI6MTY3MTc4NjcwOX0.-xPKTs6Vry36aoYM37R-F-1DLrvAwWvLd4AuJMpdgfw"
-}`
+   `{
+    "approved": false,
+    "id": 23,
+    "title": "Butas kauno miesto centre",
+    "price": "10",
+    "address": "Kauno miesto centras Kestucio g. 8",
+    "description": "Naujos statybos butas netoli kauno pilies",
+    "userId": 20,
+    "updatedAt": "2022-12-22T09:14:01.605Z",
+    "createdAt": "2022-12-22T09:14:01.605Z"
+    }`
 ### Get /api/posts
 #### Gauna visus skelbimus iš duomenų bazės, gali pasiekti neautentifikuoti žmonės
 #### Resource URL
