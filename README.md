@@ -245,7 +245,7 @@ Sistemos sudedamos dalys:
 | ------------- | ------------- | ------------- | ------------- | ------------- |
 | id  | yes  | id of the post  |   | 17  |
 #### Example Request
- `Put DELETE https://rental-management-sytem.herokuapp.com/api/posts/17
+ `DELETE https://rental-management-sytem.herokuapp.com/api/posts/17
     authorization: Bearer Token`
 #### Example Response
 ```json
@@ -610,3 +610,4 @@ null
 }
 ```
 ## Išvados
+### Pavyko realizuoti aprašytą sistemą, realizuojant išmokta apie Rest Api, svetainės talpinimą į debesį, pagilintos žinios apie React front-end ir Node.js back-end. Taip pat pagilintos žinios apie žmonių autentifikavimą svetainėje.
