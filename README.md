@@ -209,8 +209,8 @@ Sistemos sudedamos dalys:
 | description  | yes  | post description  |   | Naujos statybos  |
 | id  | yes  | id of the post  |   | 17  |
 #### Example Request
- `GET POST https://rental-management-sytem.herokuapp.com/api/posts/17`
-`authorization: Bearer Token`
+ ```Put POST https://rental-management-sytem.herokuapp.com/api/posts/17
+    authorization: Bearer Token```
 #### Example Response
 ```json
     {
