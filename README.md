@@ -91,6 +91,7 @@ Sistemos sudedamos dalys:
 #### Resource URL
 ##### `https://rental-management-sytem.herokuapp.com/api/posts`
 #### Resource Information
+| ------------- | ------------- |
 | response formats  | JSON |
 | requires authentication | Yes |
 | possible error codes | 403,201,400 |
