@@ -109,7 +109,8 @@ Sistemos sudedamos dalys:
  description='Naujos statybos'
  authorization: Bearer Token`
 #### Example Response
-   `{
+```json
+{
     "approved": false,
     "id": 23,
     "title": "Butas kauno miesto centre",
@@ -119,7 +120,8 @@ Sistemos sudedamos dalys:
     "userId": 20,
     "updatedAt": "2022-12-22T09:14:01.605Z",
     "createdAt": "2022-12-22T09:14:01.605Z"
-    }`
+    }
+```
 ### Get /api/posts
 #### Gauna visus skelbimus iš duomenų bazės, gali pasiekti neautentifikuoti žmonės
 #### Resource URL
